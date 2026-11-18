@@ -1,11 +1,11 @@
 
-const SITE_LIVE = false; // Change to false to take the website offline.
+const SITE_LIVE = false; // Change to true to restore the website.
 
 const FEED_URL = "data/updates.json";
 const TIME_ZONE = "Asia/Kolkata";
 
 if (!SITE_LIVE) {
-  document.title = "404: We've left the building.";
+  document.title = "404: Nothing to report.";
 
   document.body.replaceChildren();
 
@@ -35,7 +35,7 @@ if (!SITE_LIVE) {
   `;
 
   const heading = document.createElement("h1");
-  heading.textContent = "We've left the building.";
+  heading.textContent = "Nothing to report.";
   heading.style.cssText = `
     margin: 18px 0 12px;
     font-size: clamp(30px, 6vw, 52px);
@@ -44,25 +44,17 @@ if (!SITE_LIVE) {
   `;
 
   const message = document.createElement("p");
-  message.textContent = "Nothing to see here. Move along.";
+  message.textContent =
+    "The people who need to know, know. The rest can enjoy this page.";
   message.style.cssText = `
+    max-width: 520px;
     margin: 0;
     color: #cbd5e1;
     font-size: 18px;
+    line-height: 1.6;
   `;
 
-  const footer = document.createElement("p");
-  footer.textContent =
-    "This website is currently enjoying an extended vacation. Please respect its privacy.";
-  footer.style.cssText = `
-    max-width: 480px;
-    margin: 22px 0 0;
-    color: #94a3b8;
-    font-size: 14px;
-    line-height: 1.7;
-  `;
-
-  page.append(code, heading, message, footer);
+  page.append(code, heading, message);
   document.body.append(page);
 } else {
   const container = document.getElementById("updates-container");
