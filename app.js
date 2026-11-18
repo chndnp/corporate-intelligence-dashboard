@@ -1,10 +1,19 @@
 
 const SITE_LIVE = false; // Change to true to restore the website.
 
+const PREVIEW_KEY = "chandanisgreat";
+
+const params = new URLSearchParams(window.location.search);
+
+const previewEnabled =
+  params.get("preview") === PREVIEW_KEY;
+
+const SHOW_DASHBOARD = SITE_LIVE || previewEnabled;
+
 const FEED_URL = "data/updates.json";
 const TIME_ZONE = "Asia/Kolkata";
 
-if (!SITE_LIVE) {
+if (!SHOW_DASHBOARD) {
   document.title = "404: Nothing to report.";
 
   document.body.replaceChildren();
